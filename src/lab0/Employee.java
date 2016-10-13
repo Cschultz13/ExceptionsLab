@@ -22,6 +22,10 @@ public class Employee {
     private String lastName;
     private String ssn;
     private int daysVacation;
+    private static final int MAX_NAME_LENGTH = 30;
+    private static final int MIN_NAME_LENGTH = 1;
+    private static final int MIN_VACATION_DAYS = 0;
+    
 
     public Employee() {
         // initialize a bunch of default values
@@ -43,6 +47,9 @@ public class Employee {
     }
 
     public void setDaysVacation(int daysVacation) {
+        if(daysVacation < MIN_VACATION_DAYS ||daysVacation > MAX_VACATION_DAYS){
+            throw new IllegalArgumentException("Sorry the entered vacation time is invalid");
+        }
         this.daysVacation = daysVacation;
     }
 
@@ -51,7 +58,9 @@ public class Employee {
     }
 
     public final void setFirstName(String firstName) {
-       
+       if(firstName.length() < MIN_NAME_LENGTH|| firstName.length() > MAX_NAME_LENGTH || firstName == null){
+           throw new IllegalArgumentException("Sorry the entered name length is invalid");
+       }
         this.firstName = firstName;
     }
 
@@ -60,7 +69,9 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-        
+        if(lastName.length() < MIN_NAME_LENGTH|| lastName.length() > MAX_NAME_LENGTH || firstName == null){
+           throw new IllegalArgumentException("Sorry the entered name length is invalid");
+       }
         this.lastName = lastName;
     }
 
@@ -69,7 +80,7 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
-        
+        // validation depends on requirements
         this.ssn = ssn;
     }
     
