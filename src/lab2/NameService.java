@@ -19,13 +19,15 @@ public class NameService {
      * fewer than two parts
      */
     public String extractLastName(String fullName) {
-        String lastName = null;
-        
-        // write your code here to extract the lastName and store in the
-        // above local variable
-        
-        return lastName;
+       String[] name = fullName.split(" ");
+        if (name.length > 2 || name.length < 2) {
+            throw new IllegalArgumentException("Please enter your full name in format: First Last.");
+        }
+
+        return name[1];
     }
+
+
     
 
     
